@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"rel="stylesheet"/>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
 </head>
 <body>
     <header class="bg-[#F0F8FF] flex justify-between h-[80px]">
@@ -35,38 +37,39 @@
         <div class="border-2 rounded-[10px] h-full p-6 gap-2 ml-[20px] w-full">
             <h2 class="text-3xl font-bold text-[#122B50] mb-3">Créer un nouveau projet</h2>
             <p class="text-gray-500 text-lg ">Remplissez les informations pour générie votre plan de développement avec l'IA</p>
-        <form action="" class=" flex flex-col  h-full p-6 gap-2 ml-[20px] my-2 w-full ">
-                <div class="flex flex-col gap-2 w-full h-auto">
+       
+            <form id="validationForm" action="" class=" flex flex-col  h-full p-6 gap-2 ml-[20px] my-2 w-full " data-parsley-validate>
+                <div id="formValidation" class="flex flex-col gap-2 w-full h-auto">
                 <label for="Nom" class="text-[#122B50] font-semibold text-base">Nom du projet :</label>
-                <input type="text" id="projectName" class="w-[300px] border-2 rounded-[10px] p-3" placeholder="Nom du projet" required>
+                <input type="text" id="Nom" class="w-[300px] border-2 rounded-[10px] p-3" placeholder="Nom du projet" required data-parsley-minlength="3" data-parsley-minlength-message="Le nom doit contenir au moins 3 caractères.">
                 </div>
 
-                <div class="flex flex-col gap-2 w-full h-auto">
+                <div id="formValidation" class="flex flex-col gap-2 w-full h-auto">
                 <label for="description" class="text-[#122B50] font-semibold text-base">Description :</label>
-                <textarea id="description" class="w-[100%] h-[50px] border-2 rounded-[10px] p-3"placeholder="Description du projet"required></textarea>
+                <textarea id="description" class="w-[100%] h-[50px] border-2 rounded-[10px] p-3"placeholder="Description du projet"required data-parsley-minlength="10" data-parsley-minlength-message="La description doit contenir au moins 10 caractères."></textarea>
                 </div>
 
-                <div class="flex flex-col gap-2 w-full h-auto">
+                <div id="formValidation" class="flex flex-col gap-2 w-full h-auto">
                 <label for="Brief" class="text-[#122B50] font-semibold text-base"> Brief complet :</label>
-                <textarea id="description" class="w-full h-[50px] border-2 rounded-[10px] p-3"placeholder="Fonctionnalités, objectifs, contraintes..."required></textarea>
+                <textarea id="Brief" class="w-full h-[50px] border-2 rounded-[10px] p-3"placeholder="Fonctionnalités, objectifs, contraintes..."required data-parsley-minlength="30"data-parsley-minlength-message="Le brief doit contenir au moins 30 caractères."></textarea>
                 </div>
 
                 <div class="flex gap-10 w-full h-auto">
-                        <div class="flex flex-col  gap-2">
+                        <div id="formValidation" class="flex flex-col  gap-2">
                         <label for="duree" class="text-[#122B50] font-semibold text-base"> Durée (jours) :</label>
-                        <input type="number" id="duree" class="w-[100%] border-2 rounded-[10px] p-3" placeholder="Ex : 9">
+                        <input type="number" id="duree" class="w-[100%] border-2 rounded-[10px] p-3" placeholder="Ex : 9" required min="1"data-parsley-min-message="La durée doit être au moins égale à 1.">
                    </div>
-                        <div class="flex flex-col gap-2 ml-[330px]">
+                        <div id="formValidation" class="flex flex-col gap-2 ml-[330px]">
                         <label for="developpeurs" class="text-[#122B50] font-semibold text-base">Developpeurs :</label>
-                        <input type="number" id="developpeurs" class="w-[100%] border-2 rounded-[10px] p-3" placeholder="Ex : 3">
+                        <input type="number" id="developpeurs" class="w-[100%] border-2 rounded-[10px] p-3" placeholder="Ex : 3" required min="1" data-parsley-min-message="Le nombre de développeurs doit être au moins égal à 1."> 
                         </div>
                 </div>
                 <div class="flex gap-20">
-                <div class="flex flex-col gap-2 w-[500px] h-auto">
+                <div id="formValidation" class="flex flex-col gap-2 w-[500px] h-auto">
                         <label for="technologies" class="text-[#122B50] font-semibold text-base"> Technologies :</label>
-                        <input type="text" name="" id="technologies" class="w-[100%] border-2 rounded-[10px] p-3" placeholder="JAVAScript , CSS ...">
+                        <input type="text" name="" id="technologies" class="w-[100%] border-2 rounded-[10px] p-3" placeholder="JAVAScript , CSS ..." required data-parsley-minlength="2" data-parsley-required-message="Indique au moins une technologie.">
                 </div>
-                <div class="flex flex-col w-[30%]">
+                <div id="formValidation" class="flex flex-col w-[30%]">
                     <label for="difficulty" class="text-[#122B50] font-semibold text-base">Niveau de difficulté :</label>
                     <select id="difficulty" class="w-[100%] border-2 rounded-[10px] p-3 mt-3 text-gray-500 text-lg " required>
                     <option value="" class="hidden">Choisir un niveau</option>
@@ -77,10 +80,11 @@
                 </div>
                 </div>
                 <div class="flex justify-center mx-[25%] mt-4">
-                    <button class=" w-full  bg-blue-600 text-white p-3 rounded-[10px] hover:bg-blue-700">Générer le plan de développement</button>
+                    <button id="btnSubmit" type="submit" class=" w-full  bg-blue-600 text-white p-3 rounded-[10px] hover:bg-blue-700">Générer le plan de développement</button>
                 </div>
         </form>
         </div>
     </div>
+    <script src="validation.js"></script>
 </body>
 </html>

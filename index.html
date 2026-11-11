@@ -33,11 +33,37 @@
             <div id="divASIDE"></div>
         </aside>
         <div id="projets" class="w-full">
-            <div class="flex justify-between w-[100%]">
-                <h2 class="text-3xl font-bold text-[#122B50] mb-3 mt-4">Mes projet</h2>
-                <button id="NouveauProjet" class="min-w-auto px-7 py-2 mt-4 bg-[#2B9BED] rounded-[14px] text-center text-white">Nouveau Projet</button>
+            <div class="grid grid-cols-2 w-full gap-6">
+                <div class="w-full">
+                <h1 class="text-3xl font-bold text-[#122B50] my-4 mx-10">Mes projet</h1>
+                <p class="text-gray-500 text-lg mx-6">Gérez vos projet et suivez leur avancement.</p>
+                </div>
+                <div class="justify-self-end">
+                <button id="NouveauProjet" class="w-[200px] px-7 py-2 mt-4 bg-[#2B9BED] rounded-[14px] text-center text-white">+ Nouveau Projet</button>
+                </div>
+                <div class="col-span-2 mt-[30px]">
+                    <div class="flex w-full justify-evenly">
+                        <div>
+                            <h2 class="w-[200px] h-[50px] py-2 text-lg text-center font-semibold text-[#122B50] font-bold rounded-[10px] bg-[#F0F8FF] border-2 ">Total des tâches</h2>
+                            <p></p>
+                        </div>
+                        <div>
+                            <h2 class="w-[200px] h-[50px] py-2 text-lg text-center font-semibold text-[#122B50] font-bold rounded-[10px] bg-[#F0F8FF] border-2 ">Terminées</h2>
+                            <p></p>
+                        </div>
+                        <div>
+                            <h2 class="w-[200px] h-[50px] py-2 text-lg text-center font-semibold text-[#122B50] font-bold rounded-[10px] bg-[#F0F8FF] border-2 ">En cours</h2>
+                            <p></p>
+                        </div>
+                        <div>
+                            <h2 class="w-[200px] h-[50px] py-2 text-lg text-center font-semibold text-[#122B50] font-bold rounded-[10px] bg-[#F0F8FF] border-2 ">À faire</h2>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    
 </body>
 </html>
