@@ -78,7 +78,7 @@
                     </div>
                 </div>
 
-            <div class="col-span-2 mt-[15px] h-full">
+            <div id="aucunProjet" class="col-span-2 mt-[15px] h-full hidden">
                 <div class="w-full rounded-[10px] bg-[#F0F8FF] border-2 flex flex-col items-center justify-center text-center p-6">
 
                     <img src="img/Dossier bleu avec accents lumineux.png" alt="Dossier" class="w-[150px] h-[150px] object-contain mb-3">
@@ -89,6 +89,36 @@
 
                     <a href="new-project.html" class="w-[200px] px-7 py-2 mt-4 bg-[#2B9BED] hover:bg-blue-700 rounded-[10px] text-center text-white font-semibold">+ Nouveau projet</a>
                     </div>
+                </div>
+
+                <div id="projetsUtilisateur" class="col-span-2 mt-[15px] h-full grid grid-cols-3 gap-6 p-6">
+                    <div class="bg-[#F0F8FF] border-2 border-[#D6E6F5] rounded-[14px] p-6">
+                        <h3 id="nomProjet" class="text-xl font-bold text-[#122B50]">PROJET</h3>
+                        <p id="descriptionProjet" class="text-gray-500 mt-3">PROJET PROJET</p>
+                        <div class="grid grid-cols-3 gap-2 text-center mt-6">
+
+                            <div>
+                                <p class="text-sm text-[#122B50]">Total</p>
+                                <p id="Total" class="text-2xl font-bold text-[#122B50]">10</p>
+                            </div>
+
+                            <div class="border-x-2 border-[#D6E6F5]">
+                                <p class="text-sm text-[#122B50]">Terminées</p>
+                                <p id="Terminees" class="text-2xl font-bold text-[#122B50]">4</p>
+                            </div>
+
+                            <div>
+                                <p class="text-sm text-[#122B50]">Restantes</p>
+                                <p id="Restantes" class="text-2xl font-bold text-[#122B50]">6</p>
+                            </div>
+
+                        </div>
+                        <div class="flex gap-2 mt-6">
+                            <a href="project.html" id="Ouvrirbtn" class=" bg-[#2B9BED] w-[50%] text-white text-center font-semibold px-4 py-3 rounded-[10px]">Ouvrir <br> le projet</a>
+                            <button type="button" id="Supprimer" class="bg-[#2B9BED] w-[50%] text-white text-center font-semibold px-4 py-3 rounded-[10px]">Supprimer</button>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
