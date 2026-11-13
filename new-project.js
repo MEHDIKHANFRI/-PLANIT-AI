@@ -1,14 +1,11 @@
 
-formulaire.addEventListener("submit" , e=>{
+formulaire.addEventListener("submit" , async e=>{
     e.preventDefault();
-    if(validation.validate()){
-        let projets = [];
-        const data = localStorage.getItem("projets");
-        if(data != null){
-            projets = JSON.parse(data);
+    if(!validation.validate()){
+        return;
         }
+        
         const projet = {
-            id : projets.length + 1,
             nom : document.querySelector("#Nom").value.trim(),
             description : document.querySelector("#description").value.trim(),
             brief : document.querySelector("#Brief").value.trim(),
@@ -18,10 +15,26 @@ formulaire.addEventListener("submit" , e=>{
             difficulty : document.querySelector("#difficulty").value,
             tasks : []
         };
-        
-        projets.push(projet);
-        localStorage.setItem("projets", JSON.stringify(projets));
+         btnSubmit.disabled = true;
+         try{
+            const response = await fetch ("ht",{
+            
+                method: "POST",
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(projet)
+            
+         });
+         if(!response.ok){
+            throw new Error(""):
+         }
         alert("Projet enregistré !");
         window.location.href = "index.html";
-    }
+        } catch (error){
+            alert(error.message);
+        }finally{
+            btnSubmit.disabled = !validation.isValid();
+        }
+    
 });

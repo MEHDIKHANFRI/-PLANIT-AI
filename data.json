@@ -1,0 +1,27 @@
+{
+
+  "id": "TASK-001",
+
+  "title": "Create the task board interface",
+
+  "description": "Build the three-column board (To Do, In Progress, Done) and the task cards.",
+
+  "userStories": ["As a user, I want to see my tasks in a board so that I can follow the progress of my project."],
+
+  "acceptanceCriteria": ["The three columns are displayed.", "Each card shows the title, priority, size and deadline.", "The layout is usable on mobile."],
+
+  "priority": "High",
+
+  "importance": "High",
+
+  "size": "M",
+
+  "estimatedTime": 6,
+
+  "deadline": "Day 2",
+
+  "status": "To Do",
+
+  "dependencies": []
+
+}
