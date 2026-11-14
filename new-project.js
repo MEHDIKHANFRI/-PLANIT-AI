@@ -1,3 +1,4 @@
+import { formulaire,btnSubmit,validation } from "./validation.js";
 
 formulaire.addEventListener("submit" , async e=>{
     e.preventDefault();
@@ -27,7 +28,7 @@ formulaire.addEventListener("submit" , async e=>{
             
          });
          if(!response.ok){
-            throw new Error(""):
+            throw new Error("Impossible d'enregistrer le projet.");
          }
         alert("Projet enregistré !");
         window.location.href = "index.html";

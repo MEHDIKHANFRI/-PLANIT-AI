@@ -2,16 +2,22 @@ const donneDemo = localStorage.getItem("demoProjet");
 
 try{
     const projet = JSON.parse(donneDemo);
+        let aFaire = 0;
+        let enCours = 0;
+        let terminer = 0;
 
     for( const task of projet.tasks){
         let ligne;
-
+    
         if(task.status === "To Do"){
             ligne = document.querySelector("#aFaire");
+            aFaire++;
         }else if(task.status === "In Progress"){
             ligne = document.querySelector("#encours");
+            enCours++;
         }else if(task.status === "Done"){
             ligne = document.querySelector("#terminer");
+            terminer++;
         }
 
         const div = document.createElement("div");
@@ -28,6 +34,14 @@ try{
         ligne.appendChild(div);
 
     };
+        const totalTask =document.querySelector("#totalTask");
+        totalTask.textContent=projet.tasks.length;
+        const faireTask = document.querySelector("#faireTask");
+        faireTask.textContent = aFaire;
+        const enCoursTask = document.querySelector("#enCoursTask");
+        enCoursTask.textContent = enCours;
+        const terminerTask = document.querySelector("#terminerTask");
+        terminerTask.textContent = terminer;
 } catch(error) {
     alert("Impossible d'afficher les données du mode demo.");
 };

@@ -1,7 +1,7 @@
-const formulaire = document.querySelector("#validationForm");
-const btnSubmit = document.querySelector("#btnSubmit");
+export const formulaire = document.querySelector("#validationForm");
+export const btnSubmit = document.querySelector("#btnSubmit");
 
-const validation = $(formulaire).parsley();
+export const validation = $(formulaire).parsley();
 
 function verification (){
     const valide = validation.isValid();
