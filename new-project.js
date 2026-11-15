@@ -1,4 +1,5 @@
 import { formulaire,btnSubmit,validation } from "./validation.js";
+import { prompt } from "./prompt.js";
 
 formulaire.addEventListener("submit" , async e=>{
     e.preventDefault();
