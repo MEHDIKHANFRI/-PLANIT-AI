@@ -1,4 +1,5 @@
 import "./dialog.js";
+import { dragDrop } from "./drag&drop.js";
 
 async function MAIN() {
     try{
@@ -11,7 +12,9 @@ async function MAIN() {
         if(document.querySelector("#aFaire")){
             if(search.get("mode") == "demo"){
             await import ("./tasks.js");
+            dragDrop();
             }
+        
         }
     } catch (error){
         alert("Impossible de charger les fonctionnalités de la page.")

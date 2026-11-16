@@ -21,7 +21,7 @@ try{
         }
 
         const div = document.createElement("div");
-        div.className = "bg-white rounded-[10px] p-3 mt-4";
+        div.className = "carte bg-white rounded-[10px] p-3 mt-4";
 
         const titre = document.createElement("h3");
         titre.className = "font-bold text-black";
