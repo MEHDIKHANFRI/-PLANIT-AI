@@ -1,5 +1,6 @@
 import "./dialog.js";
 import { dragDrop } from "./drag&drop.js";
+import { parametres } from "./settings.js";
 
 async function MAIN() {
     try{
@@ -21,4 +22,5 @@ async function MAIN() {
     }
     
 }
+parametres();
 MAIN();

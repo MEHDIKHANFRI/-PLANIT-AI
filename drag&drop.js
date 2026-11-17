@@ -1,3 +1,5 @@
+import { actualiserCompteurs } from "./details.js";
+
 export function dragDrop(){
     let taskGlisse = null;
 
@@ -22,13 +24,14 @@ export function dragDrop(){
         })
         colonne.addEventListener("drop", e=>{
             e.preventDefault();
-            colonne.appendChild(taskGlisse);
+            
             const targetCarte = e.target.closest(".carte");
             if(targetCarte != taskGlisse){
                 colonne.insertBefore(taskGlisse,targetCarte);
             }else{
                 colonne.appendChild(taskGlisse);
             }
+            actualiserCompteurs();
         });
     }
 

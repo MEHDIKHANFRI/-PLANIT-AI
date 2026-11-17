@@ -17,6 +17,7 @@ formulaire.addEventListener("submit" , async e=>{
             difficulty : document.querySelector("#difficulty").value,
             tasks : []
         };
+        
          btnSubmit.disabled = true;
          try{
             const response = await fetch ("ht",{

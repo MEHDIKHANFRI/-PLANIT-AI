@@ -1,6 +1,9 @@
+import { actualiserCompteurs } from "./details.js";
+
 const donneDemo = localStorage.getItem("demoProjet");
 
 try{
+    actualiserCompteurs();
     const projet = JSON.parse(donneDemo);
         let aFaire = 0;
         let enCours = 0;
@@ -34,6 +37,8 @@ try{
         ligne.appendChild(div);
 
     };
+    actualiserCompteurs();
+    
         const totalTask =document.querySelector("#totalTask");
         totalTask.textContent=projet.tasks.length;
         const faireTask = document.querySelector("#faireTask");
