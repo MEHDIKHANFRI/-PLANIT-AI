@@ -1,5 +1,6 @@
 import { formulaire,btnSubmit,validation } from "./validation.js";
 import { prompt } from "./prompt.js";
+import { callAI } from "./api.js";
 
 formulaire.addEventListener("submit" , async e=>{
     e.preventDefault();
@@ -19,25 +20,18 @@ formulaire.addEventListener("submit" , async e=>{
         };
         
          btnSubmit.disabled = true;
+         btnSubmit.textContent = "Generation en cours ...";
          try{
-            const response = await fetch ("ht",{
+            const textePrompt = prompt(projet);
+            const plan = await callAI(textePrompt);
+            alert("Plan generer avec succés! ");
+            console.log(plan);
             
-                method: "POST",
-                headers:{
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(projet)
-            
-         });
-         if(!response.ok){
-            throw new Error("Impossible d'enregistrer le projet.");
-         }
-        alert("Projet enregistré !");
-        window.location.href = "index.html";
-        } catch (error){
+         } catch (error){
             alert(error.message);
         }finally{
             btnSubmit.disabled = !validation.isValid();
+            btnSubmit.textContent = "Générer le plan de développement" ;
         }
     
 });
