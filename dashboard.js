@@ -17,7 +17,7 @@ export function afficherProjet(){
 
     for(const projet of projets){
 
-    const carte = carteProjet.cloneNode(true);// Chaque projet aura sa propre carte.
+    const carte = carteProjet.cloneNode(true);// Chaque projet nouvelle carte.
 
 
         let terminer = 0 ;
@@ -42,16 +42,29 @@ export function afficherProjet(){
         const restantes = carte.querySelector("#Restantes");
         restantes.textContent = projet.tasks.length - terminer;
 
+        const ouvrir = carte.querySelector("#Ouvrirbtn");
+        ouvrir.addEventListener("click", e =>{
+            sessionStorage.setItem("optionAffichage" , "projet");
+            sessionStorage.setItem("projetSelectionne", projet.id);
+        }) 
 
-        
-        for (const element of carte.querySelectorAll("[id]")) {
-            element.removeAttribute("id");
-        }// Eviter de répéter les mêmes IDs dans les cartes.
+        const suprimer = carte.querySelector("#Supprimer");
+        suprimer.addEventListener("click", e =>{
+            const confirmation = confirm("Voulez-vous supprimer ce projet ?");
+            if(!confirmation){
+                return;
+            }
+
+            const position = projets.indexOf(projet);
+            projets.splice(position, 1);
+            localStorage.setItem("projetsUtilisateur", JSON.stringify(projets));
+
+            window.location.reload();
+        })
 
         projetUtilisateur.appendChild(carte);
         }
 
         aucunProjet.classList.add("hidden");
         projetUtilisateur.classList.remove ("hidden");
-}
-
+    }

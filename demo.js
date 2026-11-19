@@ -9,6 +9,8 @@ demoBTN.addEventListener("click", async() =>{
         const projet = await response.json();
         
         localStorage.setItem("demoProjet", JSON.stringify(projet));
+
+        sessionStorage.setItem("optionAffichage", "demo");
         window.location.href = "project.html?mode=demo";
     } catch (error){
         alert("Une erreur est survenue lors du chargement du mode demo.");

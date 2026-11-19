@@ -3,8 +3,26 @@ import { actualiserCompteurs } from "./details.js";
 const donneDemo = localStorage.getItem("demoProjet");
 
 try{
-    actualiserCompteurs();
-    const projet = JSON.parse(donneDemo);
+    let projet;
+    const option = sessionStorage.getItem("optionAffichage");
+
+    if(option=="demo"){
+        projet = JSON.parse(localStorage.getItem("demoProjet"));
+    } else if (option == "projet"){
+        const id = Number(sessionStorage.getItem("projetSelectionne"));
+
+        const projets = JSON.parse(localStorage.getItem("projetsUtilisateur") || "[]")
+        for(const element of projets){
+            if(element.id == id){
+                projet = element;
+                break;
+            }
+        }
+    }
+    if(!projet){
+        throw new Error("Selectionnez un projet depuis le dashboard.");
+    }
+
         let aFaire = 0;
         let enCours = 0;
         let terminer = 0;
@@ -48,5 +66,5 @@ try{
         const terminerTask = document.querySelector("#terminerTask");
         terminerTask.textContent = terminer;
 } catch(error) {
-    alert("Impossible d'afficher les données du mode demo.");
-};
+    alert(error.message);
+}
