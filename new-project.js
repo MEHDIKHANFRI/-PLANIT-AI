@@ -24,8 +24,17 @@ formulaire.addEventListener("submit" , async e=>{
          try{
             const textePrompt = prompt(projet);
             const plan = await callAI(textePrompt);
+
+            projet.tasks = plan.tasks;
+            projet.id = Date.now();
+            const projets = JSON.parse(localStorage.getItem("projetsUtilisateur") || "[]");
+            projets.push(projet);
+
+           localStorage.setItem("projetsUtilisateur", JSON.stringify(projets));
+            window.location.href = "index.html"
+
             alert("Plan generer avec succés! ");
-            console.log(plan);
+            
             
          } catch (error){
             alert(error.message);

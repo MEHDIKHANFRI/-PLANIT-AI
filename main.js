@@ -1,9 +1,13 @@
 import "./dialog.js";
 import { dragDrop } from "./drag&drop.js";
 import { parametres } from "./settings.js";
-
+import { afficherProjet } from "./dashboard.js";
 async function MAIN() {
     try{
+        parametres();
+        if (document.querySelector("#projetsUtilisateur")) {
+            afficherProjet();
+        }
         if(document.querySelector("#validationForm")){
             await import ("./demo.js");
             await import ("./new-project.js");
@@ -22,5 +26,5 @@ async function MAIN() {
     }
     
 }
-parametres();
+
 MAIN();
