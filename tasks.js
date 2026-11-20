@@ -23,6 +23,49 @@ try{
         throw new Error("Selectionnez un projet depuis le dashboard.");
     }
 
+    const supprimerTask = document.querySelector("#SuprimerTask");
+
+    supprimerTask.addEventListener("click", e=> {
+        if (!confirm("Voulez-vous supprimer cette tâche ?")) {
+            return;
+        }
+
+        const idTask = document.querySelector("#taskId").textContent;
+        let projets = [];
+        let projetREF;
+
+        if (option === "demo") {
+            projetREF = JSON.parse(localStorage.getItem("demoProjet"));
+        } else {
+            projets = JSON.parse(localStorage.getItem("projetsUtilisateur") || "[]");
+
+            for (const element of projets) {
+                if (element.id === projet.id) {
+                    projetREF = element;
+                }
+            }
+        }
+        for (let i = 0; i < projetREF.tasks.length; i++) {
+            if (projetREF.tasks[i].id === idTask) {
+                projetREF.tasks.splice(i, 1);
+                break;
+            }
+        }
+        for (const task of projetREF.tasks) {
+            const position = task.dependencies.indexOf(idTask);
+            if (position !== -1) {
+                task.dependencies.splice(position, 1);
+            }
+        }
+        if (option === "demo") {
+            localStorage.setItem("demoProjet", JSON.stringify(projetREF));
+        } else {
+            localStorage.setItem("projetsUtilisateur", JSON.stringify(projets));
+        }
+
+        window.location.reload();
+    });
+
         let aFaire = 0;
         let enCours = 0;
         let terminer = 0;
@@ -66,7 +109,7 @@ try{
             const taskPriorite = document.querySelector("#taskPriorite")
             taskPriorite.textContent= task.priority;
             const taskImportance = document.querySelector("#taskImportance");
-            taskImportance.textContent=task.taskImportance;
+            taskImportance.textContent=task.importance;
             const taskTaille = document.querySelector("#taskTaille")
             taskTaille.textContent = task.size;
             const taskDeadline = document.querySelector("#taskDeadline")
