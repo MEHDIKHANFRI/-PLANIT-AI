@@ -54,7 +54,7 @@ export function afficherProjet(){
         }
         const width = carte.querySelector(".progress");
         width.style.width = progres + "%";
-        width.titlr = progres + "%";
+        width.title = progres + "%";
         
 
         const suprimer = carte.querySelector("#Supprimer");

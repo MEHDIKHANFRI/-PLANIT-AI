@@ -30,4 +30,5 @@ export async function callAI(textePrompt){
             const resultat = await response.json();
             const texte = resultat.candidates[0].content.parts[0].text;
     return JSON.parse(texte);
+
 }

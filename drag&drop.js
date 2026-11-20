@@ -25,14 +25,59 @@ export function dragDrop(){
         colonne.addEventListener("drop", e=>{
             e.preventDefault();
             
-            const targetCarte = e.target.closest(".carte");
-            if(targetCarte != taskGlisse){
-                colonne.insertBefore(taskGlisse,targetCarte);
-            }else{
-                colonne.appendChild(taskGlisse);
+            let statut;
+            if(colonne.id =="aFaire"){
+                statut = "To Do";
+            }else if (colonne.id == "encours"){
+                statut = "In Progress"
+            }else if(colonne.id == "terminer"){
+                statut = "Done";
             }
-            actualiserCompteurs();
+            try{
+                status(taskGlisse.dataset.id, statut);
+                const target = e.target.closest(".carte");
+                if(target != taskGlisse){
+                    colonne.insertBefore(taskGlisse, target);
+                }else if(!target){
+                    colonne.appendChild(taskGlisse);
+                }
+                actualiserCompteurs();
+
+            }catch (error){
+                alert(error.message);
+            }
         });
     }
 
+}
+function status(id , statut){
+    const option = sessionStorage.getItem("optionAffichage");
+
+    let projets = [];
+    let projet;
+    if(option=="demo"){
+        projet = JSON.parse(localStorage.getItem("demoProjet"));
+    }else{
+        const idProjet = Number(sessionStorage.getItem("projetSelectionne"));
+
+        projets = JSON.parse(localStorage.getItem("projetsUtilisateur") || "[]");
+        for(const element of projets){
+            if(element.id == idProjet){
+                projet = element;
+            }
+        }
+    }
+    if(!projet){
+        throw new Error("Projet introuvable.")
+    }
+    for(const task of projet.tasks){
+        if(task.id == id){
+            task.status = statut;
+        }
+    }
+    if(option =="demo"){
+        localStorage.setItem("demoProjet", JSON.stringify(projet));
+    }else{
+        localStorage.setItem("projetsUtilisateur",JSON.stringify(projets))
+    }
 }
