@@ -14,4 +14,14 @@ export function actualiserCompteurs() {
 
     const terminerTask = document.querySelector("#terminerTask");
     terminerTask.textContent = terminer;
+
+    const total = aFaire + enCours + terminer;
+
+    let progres = 0;
+    if(total>0){
+        progres = Math.round((terminer/total)*100);
+    }
+    const width = document.querySelector(".progress");
+    width.style.width = progres + "%";
+    width.title = progres + "%";
 }

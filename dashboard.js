@@ -46,7 +46,16 @@ export function afficherProjet(){
         ouvrir.addEventListener("click", e =>{
             sessionStorage.setItem("optionAffichage" , "projet");
             sessionStorage.setItem("projetSelectionne", projet.id);
-        }) 
+        });
+
+        let progres = 0;
+        if(projet.tasks.length > 0){
+            progres = Math.round((terminer/projet.tasks.length)*100);
+        }
+        const width = carte.querySelector(".progress");
+        width.style.width = progres + "%";
+        width.titlr = progres + "%";
+        
 
         const suprimer = carte.querySelector("#Supprimer");
         suprimer.addEventListener("click", e =>{
