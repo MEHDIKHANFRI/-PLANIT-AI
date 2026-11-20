@@ -2,6 +2,7 @@ import "./dialog.js";
 import { dragDrop } from "./drag&drop.js";
 import { parametres } from "./settings.js";
 import { afficherProjet } from "./dashboard.js";
+import{dialogueTask} from "./task-dialog.js";
 async function MAIN() {
     try{
         parametres();
@@ -14,6 +15,7 @@ async function MAIN() {
         }
 
         if(document.querySelector("#aFaire")){
+            dialogueTask();
             await import ("./tasks.js");
             dragDrop();
         }

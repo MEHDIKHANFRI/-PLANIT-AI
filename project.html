@@ -50,6 +50,25 @@
             
             <div id="divASIDE"></div>
         </aside>
+
+        <dialog id="taskDialogue" class="m-auto w-[500px] p-6 overflow-y-auto rounded-[14px] bg-[#F0F8FF] ">
+            <h2 id="taskTitre" class="text-2xl font-bold text-[#122B50]"></h2>
+            <p id="taskDescription" class="mt-4 text-gray-500"></p>
+            <div id="dialogueTask" class="mt-4 text-[#122B50] rounded-[10px] bg-white p-4 text-[#123B50]">
+                <p class="flex justify-between gap-4">ID : <span id="taskId" class="font-semibold"></span></p>
+                <p class="flex justify-between gap-4">Priorité : <span id="taskPriorite" class="font-semibold"></span></p>
+                <p class = "flex justify-between gap-4">Importance : <span id="taskImportance" class="font-semibold"></span></p>
+                <p class="flex justify-between gap-4">Taille : <span id="taskTaille" class="font-bold"></span></p>
+                <p class="flex justify-between gap-4">Deadline : <span id ="taskDeadline" class="font-semibold"></span></p>
+                <p class="flex justify-between gap-4">Statut : <span id="taskStatut" class="font-semibold"></span></p>
+    
+            </div>
+            <div class="mt-6 flex justify-between">
+            <button id="SuprimerTask" class="rounded-[10px] bg-blue-600 px-6 py-2 texte-white font-semibold hover:bg-blue-700">Suprimer task</button>
+            <button id="fermerTask" class="rounded-[10px] bg-blue-600 px-6 py-2 texte-white font-semibold hover:bg-blue-700">Fermer</button>
+            </div>
+        </dialog>
+
         <div class="grid grid-cols-3 w-full gap-6 ">
             <div class="col-span-3 mt-[30px] ">
                 <h1 class="text-3xl font-bold text-[#122B50] my-4 mx-10">Task</h1>

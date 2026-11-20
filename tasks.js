@@ -55,6 +55,36 @@ try{
         div.append(titre, description);
         ligne.appendChild(div);
 
+
+        div.addEventListener("click", e => {
+            const taskTitre = document.querySelector("#taskTitre");
+            taskTitre.textContent = task.title;
+            const taskDescription = document.querySelector("#taskDescription")
+            taskDescription.textContent = task.description
+            const taskId = document.querySelector("#taskId")
+            taskId.textContent = task.id
+            const taskPriorite = document.querySelector("#taskPriorite")
+            taskPriorite.textContent= task.priority;
+            const taskImportance = document.querySelector("#taskImportance");
+            taskImportance.textContent=task.taskImportance;
+            const taskTaille = document.querySelector("#taskTaille")
+            taskTaille.textContent = task.size;
+            const taskDeadline = document.querySelector("#taskDeadline")
+            taskDeadline.textContent= task.deadline;
+
+            let statut = "To Do";
+            if(div.parentElement.id == "encours"){
+                statut = "In Progress";
+            }else if(div.parentElement.id == "terminer"){
+                statut = "Done";
+            }
+            const taskStatut = document.querySelector("#taskStatut");
+            taskStatut.textContent= statut;
+
+            const taskDialogue = document.querySelector("#taskDialogue");
+            taskDialogue.showModal();
+        })
+
     };
     actualiserCompteurs();
     
